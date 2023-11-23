@@ -744,7 +744,7 @@ document.addEventListener('DOMContentLoaded', function () {
         disableOnInteraction: true, //ユーザーの操作時に止める
         reverseDirection: false, //自動再生を逆向きにする
       },
-      speed: 1000, //表示切り替えのスピード
+      speed: 6000, //表示切り替えのスピード
       effect: "slide", //切り替えのmotion (※1)
       centeredSlides: true, //中央寄せ
       allowTouchMove: false, // スワイプで表示の切り替えを無効に
@@ -755,7 +755,7 @@ document.addEventListener('DOMContentLoaded', function () {
             spaceBetween: 10,
         },
         375: {
-            slidesPerView: 2.4,
+            slidesPerView: 2.2,
             spaceBetween: 15,
         },
         600: {
@@ -767,7 +767,7 @@ document.addEventListener('DOMContentLoaded', function () {
             spaceBetween: 20,
         },
         1500: {
-            slidesPerView: auto,
+            slidesPerView: 6,
             spaceBetween: 20,
         },
       }

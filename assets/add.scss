@@ -99,6 +99,12 @@ picture {
     display: none !important;
 }
 
+.footer-menu-bar-item {
+    p {
+        color: #fff;
+    }
+}
+
 /*----------------------------------
     Top Product
 -----------------------------------*/
@@ -1068,8 +1074,6 @@ margin-bottom: 50px;
     }
 }
 
-
-
 .underRecipe__swiper-container {
     position: relative;
     overflow: hidden;
@@ -1381,8 +1385,6 @@ margin-bottom: 50px;
 }
 
 
-
-
 .underRecipe__swiper-text-wrap {
     max-width: 1060px;
     padding: 0 0 0 30px;
@@ -1472,6 +1474,22 @@ margin-bottom: 50px;
             max-height: 630px;
         }
     }
+
+    position: relative;
+    .swiper-container {
+        margin-top: -50px;
+        opacity: .7;
+        @include mq(sp) {
+            margin-top: -2.8rem;
+        }
+    }
+    .swiper-wrapper {
+        transition-timing-function: linear;
+    }
+    .swiper-slide {
+        margin-right: 0;
+    }
+
 }
 
 
@@ -1782,9 +1800,9 @@ cart-remove-button .icon-remove {
 -----------------------------------*/
 
 .content-for-layout {
-    margin-top: 10rem;
+    margin-top: 0rem;
     @include mq(sp) {
-        margin-top: 6rem;
+        margin-top: 0rem;
     }
 }
 
