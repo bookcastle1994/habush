@@ -19,6 +19,35 @@ $breakpoints: (
     共通パーツ
 -----------------------------------*/
 
+.header__icon, .header__icon--cart .icon {
+    width: 6rem;
+    height: 6rem;
+    img {
+        width: 60%;
+    }
+    .cart-count-bubble {
+        bottom: unset;
+        left: unset;
+        right: 0.8rem;
+        top: 0.8rem;
+    }
+    @include mq(sp) {
+        width: 4.4rem;
+        height: 4.4rem;
+        img {
+            width: 80%;
+        }
+        .cart-count-bubble {
+            right: 0.4rem;
+            top: 0.4rem;
+        }
+    }
+}
+
+header .sns-icons {
+    margin-top: 0;
+}
+
 @include mq(pc) {
     #kv {
         margin-top: 35vh;
@@ -1491,6 +1520,8 @@ gap: 20px 40px;
     products - single
 -----------------------------------*/
 
+
+
 .page-width {
     padding: 0 5rem;
     max-width: 1400px;
@@ -1850,9 +1881,9 @@ cart-remove-button .icon-remove {
 -----------------------------------*/
 
 .content-for-layout {
-    margin-top: 0rem;
+    margin-top: 10rem;
     @include mq(sp) {
-        margin-top: 0rem;
+        margin-top: 10rem;
     }
 }
 
