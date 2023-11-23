@@ -756,6 +756,7 @@ picture {
 }
 
 #js-mouse__topRecipe {
+  position: absolute;
   width: 0;
   height: 0;
   top: -60px;
@@ -785,7 +786,7 @@ picture {
   width: 120px;
   height: 120px;
   transform: translate(0, 0);
-  z-index: 9999;
+  z-index: 9999999;
   display: flex;
   justify-content: center;
   align-items: center;
