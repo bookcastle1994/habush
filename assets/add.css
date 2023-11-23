@@ -64,6 +64,14 @@ header {
     right: 20px;
   }
 }
+.footer-menu-bar-item p {
+  transition: all 0.3s ease;
+}
+
+.footer-menu-bar-item:hover p {
+  color: #272727;
+}
+
 .footer-menu-bar-item.goods {
   padding-right: 20%;
 }
@@ -96,6 +104,40 @@ picture {
   color: #fff;
 }
 
+#story .copy {
+  top: -200px !important;
+}
+
+/* modal-04 */
+#modal-04 .c-modal_content {
+  padding: 50px 0;
+}
+
+#modal-04 .mark {
+  width: 28px;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+#modal-04 h3 {
+  font-size: 1.6rem;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+#modal-04 ul {
+  gap: 20px 40px;
+}
+
+@media screen and (min-width: 769px) {
+  #modal-04 .c-modal_content {
+    padding: 100px 0;
+  }
+  #modal-04 h3 {
+    font-size: 2rem;
+    margin-bottom: 80px;
+  }
+}
 /*----------------------------------
     Top Product
 -----------------------------------*/

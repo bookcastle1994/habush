@@ -5,7 +5,7 @@ var w = $(window).width();
 $(window).on('load scroll', function () {
   s = $(this).scrollTop();
 });
-$(function () {
+jQuery(function($) {
   // スクロール
   $('a[href^="#"]').click(function () {
     var speed = 1500;
@@ -511,7 +511,7 @@ if ( window.document.body.id === 'underRecipe' ) {
   });
 
 
-  $(function () {
+  jQuery(function($) {
     $(document).ready(function(){
       var list = $('.underRecipe__swiper-thumb-wrap');
       var containerA = $('.underRecipe__swiper-container');
@@ -535,13 +535,12 @@ if ( window.document.body.id === 'underRecipe' ) {
         }
       });
     });
-
   });
 }
 
 
 
-$(function () {
+jQuery(function($) {
 
   const mouse = $("#js-mouse__topProcess");
   $(document).on("mousemove",function(e){
