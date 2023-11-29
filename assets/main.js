@@ -142,36 +142,38 @@ new Swiper('.kv-list', {
   },
 });
 
-$(".loop-normal").slick({
-  autoplay: true, // 自動でスクロール
-  autoplaySpeed: 0, // 自動再生のスライド切り替えまでの時間を設定
-  speed: 5000, // スライドが流れる速度を設定
-  cssEase: "linear", // スライドの流れ方を等速に設定
-  swipe: false, // 操作による切り替えはさせない
-  centerMode: true,
-  variableWidth: true,
-  arrows: false, // 矢印非表示
-  pauseOnFocus: true, // スライダーをフォーカスした時にスライドを停止させるか
-  pauseOnHover: true, // スライダーにマウスホバーした時にスライドを停止させるか
-  useTransform: false,
-  // lazyLoad: 'progressive',
-});
+document.addEventListener('DOMContentLoaded', function () {
+  $(".loop-normal").slick({
+    autoplay: true, // 自動でスクロール
+    autoplaySpeed: 0, // 自動再生のスライド切り替えまでの時間を設定
+    speed: 5000, // スライドが流れる速度を設定
+    cssEase: "linear", // スライドの流れ方を等速に設定
+    swipe: false, // 操作による切り替えはさせない
+    centerMode: true,
+    variableWidth: true,
+    arrows: false, // 矢印非表示
+    pauseOnFocus: true, // スライダーをフォーカスした時にスライドを停止させるか
+    pauseOnHover: true, // スライダーにマウスホバーした時にスライドを停止させるか
+    useTransform: false,
+    // lazyLoad: 'progressive',
+  });
 
 
-$(".loop-reverse").slick({
-  autoplay: true, // 自動でスクロール
-  autoplaySpeed: 0, // 自動再生のスライド切り替えまでの時間を設定
-  speed: 5000, // スライドが流れる速度を設定
-  cssEase: "linear", // スライドの流れ方を等速に設定
-  swipe: false, // 操作による切り替えはさせない
-  centerMode: true,
-  variableWidth: true,
-  arrows: false, // 矢印非表示
-  pauseOnFocus: false, // スライダーをフォーカスした時にスライドを停止させるか
-  pauseOnHover: false, // スライダーにマウスホバーした時にスライドを停止させるか
-  useTransform: false,
-  rtl: true,
-  // lazyLoad: 'progressive',
+  $(".loop-reverse").slick({
+    autoplay: true, // 自動でスクロール
+    autoplaySpeed: 0, // 自動再生のスライド切り替えまでの時間を設定
+    speed: 5000, // スライドが流れる速度を設定
+    cssEase: "linear", // スライドの流れ方を等速に設定
+    swipe: false, // 操作による切り替えはさせない
+    centerMode: true,
+    variableWidth: true,
+    arrows: false, // 矢印非表示
+    pauseOnFocus: false, // スライダーをフォーカスした時にスライドを停止させるか
+    pauseOnHover: false, // スライダーにマウスホバーした時にスライドを停止させるか
+    useTransform: false,
+    rtl: true,
+    // lazyLoad: 'progressive',
+  });
 });
 
 
@@ -605,149 +607,150 @@ jQuery(function($) {
 // top process 画像切り替わり
 //========================
 
-if ( window.document.body.id === 'top' ) {
-  
-  // 13枚の画像のファイル名を配列で用意
-  const imageFiles = [
-    'process_img1.png', 'process_img2.png', 'process_img3.png', 'process_img4.png',
-    'process_img5.png', 'process_img6.png', 'process_img7.png', 'process_img8.png',
-    'process_img9.png', 'process_img10.png', 'process_img11.png', 'process_img12.png', 'process_img13.png'
-  ];
+document.addEventListener('DOMContentLoaded', function () {
+  if ( window.document.body.id === 'top' ) {
 
-  function getRandomUniqueImages(numImages) {
-    const uniqueImages = new Set();
+    // 13枚の画像のファイル名を配列で用意
+    const imageFiles = [
+      'process_img1.png', 'process_img2.png', 'process_img3.png', 'process_img4.png',
+      'process_img5.png', 'process_img6.png', 'process_img7.png', 'process_img8.png',
+      'process_img9.png', 'process_img10.png', 'process_img11.png', 'process_img12.png', 'process_img13.png'
+    ];
+
+    function getRandomUniqueImages(numImages) {
+      const uniqueImages = new Set();
+      
+      while (uniqueImages.size < numImages) {
+        const randomIndex = Math.floor(Math.random() * imageFiles.length);
+        uniqueImages.add(imageFiles[randomIndex]);
+      }
     
-    while (uniqueImages.size < numImages) {
-      const randomIndex = Math.floor(Math.random() * imageFiles.length);
-      uniqueImages.add(imageFiles[randomIndex]);
+      return Array.from(uniqueImages);
     }
-  
-    return Array.from(uniqueImages);
+    
+    
+    
+    var windowWidth = window.innerWidth;
+    var windowSm = 768;
+    if (windowWidth <= windowSm) {
+      // 画像を切り替える関数
+      function changeImage() {
+        const imageContainer = document.getElementById('imageContainer');
+        // 4枚のランダムな画像を取得
+        // const randomImages = Array.from({ length: 4 }, () => getRandomImage());
+        const randomImages = getRandomUniqueImages(4);
+
+        // 画像を表示するHTMLを生成
+        const html = randomImages.map(image => `
+          <div class="img">
+            <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
+          </div>
+          <div class="img">
+            <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
+          </div>
+        `).join('');
+    
+        // HTMLを画像コンテナに設定
+        imageContainer.innerHTML = html;
+        document.querySelector('.process__img-wrap').classList.add('js-show');
+      }
+
+      function changeImage2() {
+        const imageContainer = document.getElementById('imageContainer2');
+        // 4枚のランダムな画像を取得
+        // const randomImages = Array.from({ length: 4 }, () => getRandomImage());
+        const randomImages = getRandomUniqueImages(4);
+
+        // 画像を表示するHTMLを生成
+        const html = randomImages.map(image => `
+          <div class="img">
+            <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
+          </div>
+          <div class="img">
+            <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
+          </div>
+        `).join('');
+        // HTMLを画像コンテナに設定
+        imageContainer.innerHTML = html;
+        document.querySelector('.process__img-wrap2').classList.add('js-show');
+      }
+
+    } 
+    
+    else {
+      // 画像を切り替える関数
+      function changeImage() {
+        const imageContainer = document.getElementById('imageContainer');
+        // 4枚のランダムな画像を取得
+        // const randomImages = Array.from({ length: 4 }, () => getRandomImage());
+        const randomImages = getRandomUniqueImages(4);
+
+        // 画像を表示するHTMLを生成
+        const html = randomImages.map(image => `
+        <div class="process__img">
+          <div class="img">
+            <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
+          </div>
+          <div class="img">
+            <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
+          </div>
+          <div class="img">
+            <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
+          </div>
+          <div class="img">
+            <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
+          </div>
+        </div>
+        `).join('');
+        // HTMLを画像コンテナに設定
+        imageContainer.innerHTML = html;
+        document.querySelector('.process__img-wrap').classList.add('js-show');
+      }
+
+      function changeImage2() {
+        const imageContainer = document.getElementById('imageContainer2');
+        // 4枚のランダムな画像を取得
+        // const randomImages = Array.from({ length: 4 }, () => getRandomImage());
+        const randomImages = getRandomUniqueImages(4);
+
+        // 画像を表示するHTMLを生成
+        const html = randomImages.map(image => `
+        <div class="process__img">
+          <div class="img">
+            <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
+          </div>
+          <div class="img">
+            <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
+          </div>
+          <div class="img">
+            <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
+          </div>
+          <div class="img">
+            <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
+          </div>
+        </div>
+        `).join('');
+        // HTMLを画像コンテナに設定
+        imageContainer.innerHTML = html;
+        document.querySelector('.process__img-wrap2').classList.add('js-show');
+      }
+    }
+
+    // 初回の画像表示
+    changeImage();
+
+    // 5秒ごとに画像を切り替える
+    setInterval(changeImage, 10000);
+
+    // 5秒後にchangeImage2を実行
+    setTimeout(function() {
+      changeImage2();
+
+      // その後、10秒ごとに繰り返し実行
+      setInterval(changeImage2, 10000);
+    }, 5000);
   }
-  
-  
-  
-  var windowWidth = window.innerWidth;
-  var windowSm = 768;
-  if (windowWidth <= windowSm) {
-    // 画像を切り替える関数
-    function changeImage() {
-      const imageContainer = document.getElementById('imageContainer');
-      // 4枚のランダムな画像を取得
-      // const randomImages = Array.from({ length: 4 }, () => getRandomImage());
-      const randomImages = getRandomUniqueImages(4);
-
-      // 画像を表示するHTMLを生成
-      const html = randomImages.map(image => `
-        <div class="img">
-          <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
-        </div>
-        <div class="img">
-          <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
-        </div>
-      `).join('');
-  
-      // HTMLを画像コンテナに設定
-      imageContainer.innerHTML = html;
-      document.querySelector('.process__img-wrap').classList.add('js-show');
-    }
-
-    function changeImage2() {
-      const imageContainer = document.getElementById('imageContainer2');
-      // 4枚のランダムな画像を取得
-      // const randomImages = Array.from({ length: 4 }, () => getRandomImage());
-      const randomImages = getRandomUniqueImages(4);
-
-      // 画像を表示するHTMLを生成
-      const html = randomImages.map(image => `
-        <div class="img">
-          <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
-        </div>
-        <div class="img">
-          <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
-        </div>
-      `).join('');
-      // HTMLを画像コンテナに設定
-      imageContainer.innerHTML = html;
-      document.querySelector('.process__img-wrap2').classList.add('js-show');
-    }
-
-  } 
-  
-  else {
-    // 画像を切り替える関数
-    function changeImage() {
-      const imageContainer = document.getElementById('imageContainer');
-      // 4枚のランダムな画像を取得
-      // const randomImages = Array.from({ length: 4 }, () => getRandomImage());
-      const randomImages = getRandomUniqueImages(4);
-
-      // 画像を表示するHTMLを生成
-      const html = randomImages.map(image => `
-      <div class="process__img">
-        <div class="img">
-          <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
-        </div>
-        <div class="img">
-          <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
-        </div>
-        <div class="img">
-          <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
-        </div>
-        <div class="img">
-          <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
-        </div>
-      </div>
-      `).join('');
-      // HTMLを画像コンテナに設定
-      imageContainer.innerHTML = html;
-      document.querySelector('.process__img-wrap').classList.add('js-show');
-    }
-
-    function changeImage2() {
-      const imageContainer = document.getElementById('imageContainer2');
-      // 4枚のランダムな画像を取得
-      // const randomImages = Array.from({ length: 4 }, () => getRandomImage());
-      const randomImages = getRandomUniqueImages(4);
-
-      // 画像を表示するHTMLを生成
-      const html = randomImages.map(image => `
-      <div class="process__img">
-        <div class="img">
-          <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
-        </div>
-        <div class="img">
-          <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
-        </div>
-        <div class="img">
-          <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
-        </div>
-        <div class="img">
-          <img src='//a6a0eb.myshopify.com/cdn/shop/files/${image}' alt='材料の画像' width='343' height='243' loading='lazy'>
-        </div>
-      </div>
-      `).join('');
-      // HTMLを画像コンテナに設定
-      imageContainer.innerHTML = html;
-      document.querySelector('.process__img-wrap2').classList.add('js-show');
-    }
-  }
-
-  // 初回の画像表示
-  changeImage();
-
-  // 5秒ごとに画像を切り替える
-  setInterval(changeImage, 10000);
-
-  // 5秒後にchangeImage2を実行
-  setTimeout(function() {
-    changeImage2();
-
-    // その後、10秒ごとに繰り返し実行
-    setInterval(changeImage2, 10000);
-  }, 5000);
-
-}
+});
 
 
 document.addEventListener('DOMContentLoaded', function () {
